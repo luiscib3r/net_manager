@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <record model="ir.actions.act_window" id="net_manager.action_ipaddress">
+      <field name="name">IP Address</field>
+      <field name="res_model">net_manager.ipaddress</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+     <record model="ir.ui.view" id="net_manager.ipaddress_kanban">
+      <field name="name">net_manager.ipaddress.kanban</field>
+      <field name="model">net_manager.ipaddress</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_dropdown_kanban dropdown" tabindex="-1">
+                  <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" href="#" role="button" aria-label="Opciones" title="Opciones">
+                    <span class="fa fa-ellipsis-v"/>
+                  </a>
+                  <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <a type="delete" role="menuitem" class="dropdown-item">Borrar</a>
+                  </div>
+                </div>
+                <div class="oe_module_desc">
+                  <h4>
+                    <strong><span class="fa rounded-circle fa-laptop"></span>   <field name="name"/></strong>
+                  </h4>
+                  <br/>
+                  <div>
+                    <h4><span class="fa rounded-circle fa-user"></span>   <field name="cliente_name"/></h4>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="net_manager.ipaddress_form">
+      <field name="name">net_manager.ipaddress.form</field>
+      <field name="model">net_manager.ipaddress</field>
+      <field name="arch" type="xml">
+        <form string="ipaddress">
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="net_manager.ipaddress_tree">
+      <field name="name">net_manager.ipaddress.tree</field>
+      <field name="model">net_manager.ipaddress</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="cliente_name" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="net_manager.ipaddress_search">
+      <field name="name">net_manager.ipaddress.search</field>
+      <field name="model">net_manager.ipaddress</field>
+      <field name="arch" type="xml">
+        <search string="IP Address">
+          <field name="name"/>
+          <field name="cliente_name" />
+        </search>
+      </field>
+    </record>  
+
+    <menuitem name="IP Address" id="net_manager.submenu_ipaddress" parent="net_manager.menu_root"
+              action="net_manager.action_ipaddress"/>
+  </data>
+</odoo>

@@ -1,0 +1,76 @@
+<odoo>
+  <data>
+    <record model="ir.actions.act_window" id="net_manager.action_servicio">
+      <field name="name">Servicios</field>
+      <field name="res_model">net_manager.servicio</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+     <record model="ir.ui.view" id="net_manager.servicio_kanban">
+      <field name="name">net_manager.servicio.kanban</field>
+      <field name="model">net_manager.servicio</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_dropdown_kanban dropdown" tabindex="-1">
+                  <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" href="#" role="button" aria-label="Opciones" title="Opciones">
+                    <span class="fa fa-ellipsis-v"/>
+                  </a>
+                  <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <a type="delete" role="menuitem" class="dropdown-item">Borrar</a>
+                  </div>
+                </div>
+                <span class="fa fa-3x m-3 rounded-circle fa-server oe_module_icon" style=""></span>
+                <div class="oe_module_desc">
+                  <h4 class="o_kanban_record_title">
+                    <strong><field name="nombre"/></strong>
+                  </h4>
+                  <div>
+                    <span class="fa rounded-circle fa-money"></span> <field name="precio"/>
+                  </div>
+                  <div>
+                    <span class="fa rounded-circle fa-calendar-plus-o"></span> <field name="suscripcion"/>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="net_manager.servicio_form">
+      <field name="name">net_manager.servicio.form</field>
+      <field name="model">net_manager.servicio</field>
+      <field name="arch" type="xml">
+        <form string="Servicio">
+          <sheet>
+            <group>
+              <field name="nombre"/>
+              <field name="precio"/>
+              <field name="suscripcion"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="net_manager.servicio_tree">
+      <field name="name">net_manager.servicio.tree</field>
+      <field name="model">net_manager.servicio</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="precio"/>
+          <field name="suscripcion"/>
+        </tree>
+      </field>
+    </record>
+
+    <menuitem name="Servicios" id="net_manager.submenu_servicio" parent="net_manager.menu_root"
+              action="net_manager.action_servicio"/>
+  </data>
+</odoo>

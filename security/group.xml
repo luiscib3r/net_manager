@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <record model="res.groups" id="group_net_manager">
+            <field name="name">Net Manager</field>
+            <field name="category_id" ref="base.module_category_application" />
+        </record>
+    </data>
+</odoo>

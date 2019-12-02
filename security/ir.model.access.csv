@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_net_manager_servicio,net_manager.servicio,model_net_manager_servicio,,1,1,1,1
+access_net_manager_ipaddress,net_manager.ipaddress,model_net_manager_ipaddress,,1,1,1,1
+access_net_manager_pago,net_manager.pago,model_net_manager_pago,,1,1,0,0
+access_net_manager_estado,net_manager.estado,model_net_manager_estado,,1,1,0,0

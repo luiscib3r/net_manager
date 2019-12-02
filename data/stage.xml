@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+  <record model="net_manager.estado" id="stage_1">
+    <field name="name">Pendiente</field>
+    <field name="sequence">1</field>
+  </record>
+
+  <record model="net_manager.estado" id="stage_2">
+    <field name="name">Pagado</field>
+    <field name="sequence">2</field>
+  </record>
+</odoo>

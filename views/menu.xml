@@ -1,0 +1,6 @@
+<odoo>
+  <data>
+    <menuitem name="Net Manager" id="net_manager.menu_root" sequence="1" web_icon="net_manager,static/description/icon.png" groups="net_manager.group_net_manager"/>
+    <menuitem name="Net Manager" id="net_manager.submenu" parent="net_manager.menu_root" groups="net_manager.group_net_manager"/>
+  </data>
+</odoo>

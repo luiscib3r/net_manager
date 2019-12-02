@@ -1,0 +1,102 @@
+<odoo>
+  <data>
+    <record model="ir.actions.act_window" id="net_manager.action_cliente">
+      <field name="name">Clientes</field>
+      <field name="res_model">res.users</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="base.view_res_users_kanban">
+      <field name="name">net_manager.cliente.kanban</field>
+      <field name="model">res.users</field>
+      <field name="arch" type="xml">
+        <kanban class="o_kanban_mobile">
+          <field name="id"/>
+          <field name="name"/>
+          <field name="login"/>
+          <field name="lang"/>
+          <field name="active"/>
+          <field name="login_date"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_kanban_image">
+                  <img alt="Avatar" t-att-src="kanban_image('res.users', 'image_medium', record.id.raw_value)"/>
+                </div>
+                <div class="oe_kanban_details">
+                  <ul>
+                    <li class="text-success float-right mb4" t-if="record.active.raw_value"><i class="fa fa-circle" role="img" aria-label="Ok" title="Ok"></i></li>
+                    <li class="text-danger float-right mb4" t-if="!record.active.raw_value"><i class="fa fa-circle" role="img" aria-label="Inactivo" title="Inactivo"></i></li>
+                    <li class="mb4">
+                      <strong><field name="name"/></strong>
+                    </li>
+                    <li><field name="ip" widget="many2many_tags" options="{'color_field': 'color'}"/></li>
+                    <li><field name="servicios" widget="many2many_tags" options="{'color_field': 'id'}"/></li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="base.view_users_simple_form">
+      <field name="name">net_manager.cliente.form</field>
+      <field name="model">res.users</field>
+      <field name="arch" type="xml">
+        <form string="Users">
+          <sheet>
+            <field name="id" invisible="1"/>
+            <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium"}'/>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only"/>
+              <h1><field name="name" required="1"/></h1>
+              <field name="email" invisible="1"/>
+              <label for="login" class="oe_edit_only" string="User Login"/>
+              <h2>
+                <field name="login" placeholder="User Login"/>
+              </h2>
+            </div>
+            <group>
+              <field name="ip" widget="many2many_tags" options="{'color_field': 'color'}"/>
+              <field name="servicios" widget="many2many_tags" options="{'color_field': 'id'}"/>
+            </group>
+            <group>
+              <field name="groups_id" widget="many2many_checkboxes" 
+              domain="[('category_id', '!=', 'Administración'), ('category_id', '!=', 'Permisos extra'), ('name', '!=', 'Net Manager'), 
+              ('name', '!=', 'Acceso a direcciones privadas'), ('name', '!=', 'Portal'), ('name', '!=', 'Público'),
+              ('name', '!=', 'Características técnicas'), ('name', '!=', 'Multicompañía'), ('name', '!=', 'Multimoneda'), ]"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="base.view_users_tree">
+      <field name="name">net_manager.cliente.tree</field>
+      <field name="model">res.users</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="login_date"/>
+          <field name="ip" widget="many2many_tags" options="{'color_field': 'color'}"/>
+          <field name="servicios" widget="many2many_tags" options="{'color_field': 'id'}"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="net_manager.cliente_search">
+      <field name="name">net_manager.cliente.search</field>
+      <field name="model">res.users</field>
+      <field name="arch" type="xml">
+        <search string="Clientes">
+          <field name="name"/>
+          <field name="ip" />
+        </search>
+      </field>
+    </record>    
+
+    <menuitem name="Clientes" id="net_manager.menu_cliente" parent="net_manager.menu_root"
+              action="net_manager.action_cliente"/>
+  </data>
+</odoo>
